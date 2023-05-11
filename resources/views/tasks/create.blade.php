@@ -24,9 +24,7 @@
             </div>
             <div>
                 <label class="text-sm" for="description">Description:</label>
-                <textarea class="text-lg border-1" id="description" name="description">
-                    {{old('description')}}
-                </textarea>
+                <textarea class="text-lg border-1" id="description" name="description">{{old('description')}}</textarea>
                 @error('year')
                 <div class="form-error">
                     {{$message}}
