@@ -4,13 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Task;
+use Carbon\Carbon;
 
 class TasksController extends Controller
 {
     public function index()
     {
+        $now = Carbon::now();
+        $result = Task::where('due_date', '>', $now)
+            ->where('is_done', false)
+            ->where('is_deleted', false)
+            ->get();
         return view('tasks.index', [
-            'tasks' => Task::all()
+            'tasks' => $result
         ]);
     }
 

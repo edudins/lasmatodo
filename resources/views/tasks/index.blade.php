@@ -7,28 +7,26 @@
         <h1>Your tasks:</h1>
         @if (count($tasks) > 0)
             @foreach ($tasks as $task)
-                @if($task['done']!==true)
-                    <div class="mt-4">
-                        <div>
-                            <h2>
-                                {{$task['title']}}
-                            </h2>
-                            <ul>
+                <div class="mt-4">
+                    <div>
+                        <h2>
+                            {{$task['title']}}
+                        </h2>
+                        <ul>
+                            <li>
+                                <em>Due:</em> {{$task['due_date']}}
+                            </li>
+                            @if ($task['description'])
                                 <li>
-                                    <em>Due:</em> {{$task['due_date']}}
+                                    <em>Description:</em> {{$task['description']}}
                                 </li>
-                                @if ($task['description'])
-                                    <li>
-                                        <em>Description:</em> {{$task['description']}}
-                                    </li>
-                                @endif
-                            </ul>
-                        </div>
-                        <div>
-                            <button>Delete</button>
-                        </div>
+                            @endif
+                        </ul>
                     </div>
-                @endif
+                    <div>
+                        <button>Delete</button>
+                    </div>
+                </div>
             @endforeach
         @else
             <h2>Currently no tasks are set. Use "Create" to create new task.</h2>
