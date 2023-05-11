@@ -3,29 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Task;
 
 class TasksController extends Controller
 {
-    private static function getTasks() {
-        return [
-            ['id'=>1, 'title'=>'Clean house.', 'due_date'=>'2023-05-15', 'description'=>"Don't forget to wash the windows.", 'done'=>true],
-            ['id'=>2, 'title'=>'Buy groceries', 'due_date'=>'2023-05-20', 'description'=>"", 'done'=>false],
-            ['id'=>3, 'title'=>'Take cat to the vet', 'due_date'=>'2023-05-23', 'description'=>"", 'done'=>false],
-            ['id'=>4, 'title'=>'Take out trash', 'due_date'=>'2023-05-09', 'description'=>"", 'done'=>false],
-        ];
-    }
-
     public function index()
     {
         return view('tasks.index', [
-            'tasks'=>self::getTasks()
+            'tasks' => Task::all()
         ]);
     }
 
     public function archived()
     {
         return view('tasks.archived', [
-            'tasks'=>self::getTasks()
+            'tasks' => Task::all()
         ]);
     }
 
@@ -36,7 +28,15 @@ class TasksController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $task = new Task();
+
+        $task->title = $request->input('title');
+        $task->due_date = $request->input('due_date');
+        $task->description = $request->input('description');
+
+        $task->save();
+
+        return redirect()->route('tasks.index');
     }
 
     public function show(string $id)
