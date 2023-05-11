@@ -4,10 +4,10 @@
 
 @section('content')
     <div class="max-w-7xl mx-auto p-6 lg:p-8">
-        <h1>Your tasks:</h1>
+        <h1>Archived tasks:</h1>
         @if (count($tasks) > 0)
             @foreach ($tasks as $task)
-                @if($task['done']!==true)
+                @if($task['done']===true)
                     <div class="mt-4">
                         <div>
                             <h2>

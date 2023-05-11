@@ -8,10 +8,10 @@ class TasksController extends Controller
 {
     private static function getTasks() {
         return [
-            ['id'=>1, 'title'=>'Clean house.', 'due_date'=>'2023-05-15', 'description'=>"Don't forget to wash the windows."],
-            ['id'=>2, 'title'=>'Buy groceries', 'due_date'=>'2023-05-20', 'description'=>""],
-            ['id'=>3, 'title'=>'Take cat to the vet', 'due_date'=>'2023-05-23', 'description'=>""],
-            ['id'=>4, 'title'=>'Take out trash', 'due_date'=>'2023-05-09', 'description'=>""],
+            ['id'=>1, 'title'=>'Clean house.', 'due_date'=>'2023-05-15', 'description'=>"Don't forget to wash the windows.", 'done'=>true],
+            ['id'=>2, 'title'=>'Buy groceries', 'due_date'=>'2023-05-20', 'description'=>"", 'done'=>false],
+            ['id'=>3, 'title'=>'Take cat to the vet', 'due_date'=>'2023-05-23', 'description'=>"", 'done'=>false],
+            ['id'=>4, 'title'=>'Take out trash', 'due_date'=>'2023-05-09', 'description'=>"", 'done'=>false],
         ];
     }
 
@@ -22,7 +22,14 @@ class TasksController extends Controller
         ]);
     }
 
-    public function create()
+    public function archived()
+    {
+        return view('tasks.archived', [
+            'tasks'=>self::getTasks()
+        ]);
+    }
+
+    public function create(): string
     {
         return view('tasks.create');
     }
