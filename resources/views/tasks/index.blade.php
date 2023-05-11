@@ -24,7 +24,10 @@
                         </ul>
                     </div>
                     <div>
-                        <button>Archive</button>
+                        <form method="POST" action="{{route('tasks.archive', [$task['id']])}}">
+                            @csrf
+                            <button type="submit" onclick="return confirm(`Are you sure you want to archive this task?`)">Archive</button>
+                        </form>
                     </div>
                 </div>
             @endforeach
