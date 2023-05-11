@@ -74,6 +74,15 @@ class TasksController extends Controller
         return redirect()->route('tasks.archived');
     }
 
+    public function finish(string $id)
+    {
+        $record = Task::findOrFail($id);
+        $record->is_done = true;
+        $record->save();
+
+        return redirect()->route('tasks.archived');
+    }
+
     public function destroy(string $id)
     {
         Task::where('id', $id)->delete();

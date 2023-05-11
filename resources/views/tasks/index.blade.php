@@ -29,6 +29,12 @@
                             <button type="submit" onclick="return confirm(`Are you sure you want to archive this task?`)">Archive</button>
                         </form>
                     </div>
+                    <div>
+                        <form method="POST" action="{{route('tasks.finish', [$task['id']])}}">
+                            @csrf
+                            <button type="submit" onclick="return confirm(`Have you finished with the task?`)">Finish</button>
+                        </form>
+                    </div>
                 </div>
             @endforeach
         @else
