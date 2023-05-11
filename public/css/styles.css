@@ -13,6 +13,12 @@
 nav a {
     color: black;
     padding: .5rem;
+    border-radius: 0.5rem;
+}
+
+a:hover {
+    color: antiquewhite;
+    background: #111827;
 }
 
 .border-1 {
@@ -31,6 +37,12 @@ nav a {
 
 .form div>button {
     padding: 5px;
+}
+
+.p-2 {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-left: 1.5rem;
 }
 
 /* template styles */
