@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'lasmatodo')
+@section('title', 'todo')
 
 @section('content')
     <div class="max-w-7xl mx-auto p-6 lg:p-8">
@@ -34,6 +34,11 @@
                             @csrf
                             <button type="submit" onclick="return confirm(`Have you finished with the task?`)">Finish</button>
                         </form>
+                    </div>
+                    <div>
+                        <a href="{{route('tasks.edit', [$task])}}">
+                            <button type="button">Edit</button>
+                        </a>
                     </div>
                 </div>
             @endforeach

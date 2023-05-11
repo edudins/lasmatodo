@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'lasmatodo')
+@section('title', 'archived')
 
 @section('content')
     <div class="max-w-7xl mx-auto p-6 lg:p-8">
@@ -24,7 +24,7 @@
                         </ul>
                     </div>
                     <div>
-                        <form method="POST" action="{{ route('tasks.destroy', $task->id) }}">
+                        <form method="POST" action="{{ route('tasks.destroy', $task['id']) }}">
                             @csrf
                             @method('DELETE')
                             <button type="submit" onclick="return confirm(`Are you sure you want to completely delete this task? You won't be able to get it back.`)">Delete</button>

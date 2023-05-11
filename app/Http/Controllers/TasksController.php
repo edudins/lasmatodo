@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\TaskFormRequest;
 use App\Models\Task;
 use Carbon\Carbon;
 
@@ -37,15 +37,10 @@ class TasksController extends Controller
         return view('tasks.create');
     }
 
-    public function store(Request $request)
+    public function store(TaskFormRequest $request)
     {
-        $task = new Task();
-
-        $task->title = $request->input('title');
-        $task->due_date = $request->input('due_date');
-        $task->description = $request->input('description');
-
-        $task->save();
+        $data = $request->validated();
+        Task::create($data);
 
         return redirect()->route('tasks.index');
     }
@@ -55,14 +50,19 @@ class TasksController extends Controller
         //
     }
 
-    public function edit(string $id)
+    public function edit(Task $task)
     {
-        //
+        return view('tasks.edit', [
+            'task' => $task
+        ]);
     }
 
-    public function update(Request $request, string $id)
+    public function update(TaskFormRequest $request, Task $task)
     {
-        //
+        $data = $request->validated();
+        $task->update($data);
+
+        return redirect()->route('tasks.index');
     }
 
     public function archive(string $id)
@@ -71,7 +71,7 @@ class TasksController extends Controller
         $record->is_archived = true;
         $record->save();
 
-        return redirect()->route('tasks.archived');
+        return redirect()->route('tasks.index');
     }
 
     public function finish(string $id)
@@ -85,7 +85,9 @@ class TasksController extends Controller
 
     public function destroy(string $id)
     {
-        Task::where('id', $id)->delete();
+        $sanitizedId = intval($id);
+        Task::where('id', $sanitizedId)->delete();
+
         return redirect()->route('tasks.archived');
     }
 }

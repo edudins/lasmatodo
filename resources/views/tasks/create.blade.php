@@ -1,5 +1,7 @@
 @extends('layout')
 
+@section('title', 'create')
+
 @section('content')
     <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
         <form class="form bg-white p-6 border-1" method="POST" action="{{route('tasks.store')}}">
@@ -25,7 +27,7 @@
             <div>
                 <label class="text-sm" for="description">Description:</label>
                 <textarea class="text-lg border-1" id="description" name="description">{{old('description')}}</textarea>
-                @error('year')
+                @error('description')
                 <div class="form-error">
                     {{$message}}
                 </div>
