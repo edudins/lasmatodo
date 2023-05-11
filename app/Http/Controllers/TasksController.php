@@ -67,6 +67,7 @@ class TasksController extends Controller
 
     public function destroy(string $id)
     {
-        //
+        Task::where('id', $id)->delete();
+        return redirect()->route('tasks.archived');
     }
 }

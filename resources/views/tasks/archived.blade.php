@@ -24,12 +24,16 @@
                         </ul>
                     </div>
                     <div>
-                        <button>Delete</button>
+                        <form method="POST" action="{{ route('tasks.destroy', $task->id) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" onclick="return confirm(`Are you sure you want to completely delete this task? You won't be able to get it back.`)">Delete</button>
+                        </form>
                     </div>
                 </div>
             @endforeach
         @else
-            <h2>Currently no tasks are set. Use "Create" to create new task.</h2>
+            <h2>Currently no tasks are archived. Use "Create" to create a new task.</h2>
         @endif
     </div>
 @endsection

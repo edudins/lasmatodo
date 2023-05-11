@@ -29,7 +29,7 @@
                 </div>
             @endforeach
         @else
-            <h2>Currently no tasks are set. Use "Create" to create new task.</h2>
+            <h2>Currently no tasks are set. Use "Create" to create a new task.</h2>
         @endif
     </div>
 @endsection
