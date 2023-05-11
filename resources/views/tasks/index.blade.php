@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="max-w-7xl mx-auto p-6 lg:p-8">
-        <h1>Your tasks:</h1>
+        <h1>Your future tasks:</h1>
         @if (count($tasks) > 0)
             @foreach ($tasks as $task)
                 <div class="mt-4">
@@ -24,7 +24,7 @@
                         </ul>
                     </div>
                     <div>
-                        <button>Delete</button>
+                        <button>Archive</button>
                     </div>
                 </div>
             @endforeach

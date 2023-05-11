@@ -22,8 +22,13 @@ class TasksController extends Controller
 
     public function archived()
     {
+        $now = Carbon::now();
+        $result = Task::where('due_date', '<', $now)
+            ->orWhere('is_done', true)
+            ->orWhere('is_deleted', true)
+            ->get();
         return view('tasks.archived', [
-            'tasks' => Task::all()
+            'tasks' => $result
         ]);
     }
 
