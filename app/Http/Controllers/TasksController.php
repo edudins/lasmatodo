@@ -13,7 +13,7 @@ class TasksController extends Controller
         $now = Carbon::now();
         $result = Task::where('due_date', '>', $now)
             ->where('is_done', false)
-            ->where('is_deleted', false)
+            ->where('is_archived', false)
             ->get();
         return view('tasks.index', [
             'tasks' => $result
@@ -25,7 +25,7 @@ class TasksController extends Controller
         $now = Carbon::now();
         $result = Task::where('due_date', '<', $now)
             ->orWhere('is_done', true)
-            ->orWhere('is_deleted', true)
+            ->orWhere('is_archived', true)
             ->get();
         return view('tasks.archived', [
             'tasks' => $result
