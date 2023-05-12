@@ -31,6 +31,12 @@
                                 <button class="button" type="submit" onclick="return confirm(`Are you sure you want to completely delete this task? You won't be able to get it back.`)">Delete</button>
                             </form>
                         </div>
+                        <div>
+                            <form method="POST" action="{{ route('tasks.restore', $task['id']) }}">
+                                @csrf
+                                <button class="button" type="submit" onclick="return confirm(`Are you sure you want to restore this task? The date will be set for tomorrow.`)">Restore</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             @endforeach

@@ -74,6 +74,17 @@ class TasksController extends Controller
         return redirect()->route('tasks.index');
     }
 
+    public function restore(string $id)
+    {
+        $record = Task::findOrFail($id);
+        $record->is_archived = false;
+        $record->is_done = false;
+        $record->due_date = Carbon::now()->addDay();
+        $record->save();
+
+        return redirect()->route('tasks.index');
+    }
+
     public function finish(string $id)
     {
         $record = Task::findOrFail($id);
