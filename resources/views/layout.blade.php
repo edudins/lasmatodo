@@ -9,11 +9,11 @@
         <link rel="stylesheet" href="{{url('css/styles.css')}}">
     </head>
     <body class="antialiased">
-        <div class="relative">
+        <div class="sticky-white">
             <nav class="p-2">
-                <a class="border-1" href="{{route('tasks.index')}}">To Do</a>
-                <a class="border-1" href="{{route('tasks.create')}}">Create</a>
-                <a class="border-1" href="{{route('tasks.archived')}}">Archived</a>
+                <a class="nav-link border-1" href="{{route('tasks.index')}}">To Do</a>
+                <a class="nav-link border-1" href="{{route('tasks.create')}}">Create</a>
+                <a class="nav-link border-1" href="{{route('tasks.archived')}}">Archived</a>
             </nav>
         </div>
         <div class="bold-ghost-white relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">

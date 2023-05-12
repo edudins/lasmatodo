@@ -7,38 +7,40 @@
         <h1>Your future tasks:</h1>
         @if (count($tasks) > 0)
             @foreach ($tasks as $task)
-                <div class="mt-4">
+                <div class="card mt-4">
                     <div>
-                        <h2>
+                        <h2 class="card-title">
                             {{$task['title']}}
                         </h2>
                         <ul>
-                            <li>
+                            <li class="card-li">
                                 <em>Due:</em> {{$task['due_date']}}
                             </li>
                             @if ($task['description'])
-                                <li>
+                                <li class="card-li">
                                     <em>Description:</em> {{$task['description']}}
                                 </li>
                             @endif
                         </ul>
                     </div>
-                    <div>
-                        <form method="POST" action="{{route('tasks.archive', [$task['id']])}}">
-                            @csrf
-                            <button type="submit" onclick="return confirm(`Are you sure you want to archive this task?`)">Archive</button>
-                        </form>
-                    </div>
-                    <div>
-                        <form method="POST" action="{{route('tasks.finish', [$task['id']])}}">
-                            @csrf
-                            <button type="submit" onclick="return confirm(`Have you finished with the task?`)">Finish</button>
-                        </form>
-                    </div>
-                    <div>
-                        <a href="{{route('tasks.edit', [$task])}}">
-                            <button type="button">Edit</button>
-                        </a>
+                    <div class="card-buttons">
+                        <div>
+                            <form method="POST" action="{{route('tasks.finish', [$task['id']])}}">
+                                @csrf
+                                <button class="button" type="submit" onclick="return confirm(`Have you finished with the task?`)">Finish</button>
+                            </form>
+                        </div>
+                        <div>
+                            <form method="POST" action="{{route('tasks.archive', [$task['id']])}}">
+                                @csrf
+                                <button class="button" type="submit" onclick="return confirm(`Are you sure you want to archive this task?`)">Archive</button>
+                            </form>
+                        </div>
+                        <div>
+                            <a href="{{route('tasks.edit', [$task])}}">
+                                <button class="button" type="button">Edit</button>
+                            </a>
+                        </div>
                     </div>
                 </div>
             @endforeach
