@@ -14,7 +14,7 @@ class TaskFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required', 'min:15',
+            'title' => 'required|min:15',
             'due_date' => 'required',
             'description' => 'nullable',
         ];
