@@ -2,6 +2,8 @@
 
 ## app description
 
+Update [31-05-2023]: Added my homepage to the repo so I can deploy it.
+
 An app for creating your own todo list. Main features:
 
 - Add new task to be done.
@@ -34,3 +36,12 @@ Each task holds the following data:
 - To run the app, from project root run the command: `sudo docker-compose up --build -d`
 - To make sure both containers are running, run the command `sudo docker-compose ps`. Both containers should be up.
 - The app can be accessed via `localhost:8000`.
+
+# local development notes
+
+- To start the `Docker` daemon, call this command: `sudo systemctl start docker`.
+- Check running containers using `sudo docker ps`.
+- To launch a local `Docker` container with database, use command:
+```
+docker run --name lasmatodo -e MYSQL_ROOT_PASSWORD=<root-password> -e MYSQL_DATABASE=<database-name> -e MYSQL_USER=<username> -e MYSQL_PASSWORD=<password> -p <host-port>:3306 -v <host-directory>:/var/lib/mysql -d mysql:latest
+```
