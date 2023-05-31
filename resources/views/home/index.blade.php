@@ -15,9 +15,17 @@
         <h2 class="work-title">&emsp;Some of my projects:&emsp;</h2>
         <div class="line-break"></div>
         <div class="projects-container">
+            <!-- You cannot vertically center text within a paragraph and giving a paragraph a height is a bad idea. -->
+            <a href="/tasks" class="project-tile" target="_blank">
+                <img src="img/screen5.png" alt="Project Image" class="project-image">
+                <div class="project-title">
+                    <p>
+                        <span class="hover-snippet">{ </span>lasmatodo<span class="hover-snippet"> }</span>
+                    </p>
+                </div>
+            </a>
             <a href="/bubble-fix/bubble.html" class="project-tile" target="_blank">
                 <img src="img/screen1.png" alt="Project Image" class="project-image">
-                <!-- You cannot vertically center text within a paragraph and giving a paragraph a height is a bad idea. -->
                 <div class="project-title">
                     <p>
                         <span class="hover-snippet">{ </span>bubble-fix<span class="hover-snippet"> }</span>

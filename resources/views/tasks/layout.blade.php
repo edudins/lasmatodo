@@ -6,7 +6,7 @@
 
         <title>@yield('title')</title>
 
-        <link rel="stylesheet" href="{{url('css/styles.css')}}">
+        <link rel="stylesheet" href="{{url('css/todo/styles.css')}}">
     </head>
     <body class="antialiased">
         <div class="sticky-white">

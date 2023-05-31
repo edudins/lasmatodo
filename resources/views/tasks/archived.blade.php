@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('tasks.layout')
 
 @section('title', 'archived')
 
@@ -10,7 +10,8 @@
                 <div class="card mt-4">
                     <div>
                         <h2 class="card-title">
-                            {{$task['title']}} <em class="label">{{$task['is_done'] ? '(Finished)' : ($task['is_archived'] ? '(Archived)' : '(Missed)')}}</em>
+                            {{$task['title']}} <em
+                                    class="label">{{$task['is_done'] ? '(Finished)' : ($task['is_archived'] ? '(Archived)' : '(Missed)')}}</em>
                         </h2>
                         <ul>
                             <li class="card-li">
@@ -28,13 +29,19 @@
                             <form method="POST" action="{{ route('tasks.destroy', $task['id']) }}">
                                 @csrf
                                 @method('DELETE')
-                                <button class="button" type="submit" onclick="return confirm(`Are you sure you want to completely delete this task? You won't be able to get it back.`)">Delete</button>
+                                <button class="button" type="submit"
+                                        onclick="return confirm(`Are you sure you want to completely delete this task? You won't be able to get it back.`)">
+                                    Delete
+                                </button>
                             </form>
                         </div>
                         <div>
                             <form method="POST" action="{{ route('tasks.restore', $task['id']) }}">
                                 @csrf
-                                <button class="button" type="submit" onclick="return confirm(`Are you sure you want to restore this task? The date will be set for tomorrow.`)">Restore</button>
+                                <button class="button" type="submit"
+                                        onclick="return confirm(`Are you sure you want to restore this task? The date will be set for tomorrow.`)">
+                                    Restore
+                                </button>
                             </form>
                         </div>
                     </div>

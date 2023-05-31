@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('tasks.layout')
 
 @section('title', 'todo')
 
@@ -27,13 +27,17 @@
                         <div>
                             <form method="POST" action="{{route('tasks.finish', [$task['id']])}}">
                                 @csrf
-                                <button class="button" type="submit" onclick="return confirm(`Have you finished with the task?`)">Finish</button>
+                                <button class="button" type="submit"
+                                        onclick="return confirm(`Have you finished with the task?`)">Finish
+                                </button>
                             </form>
                         </div>
                         <div>
                             <form method="POST" action="{{route('tasks.archive', [$task['id']])}}">
                                 @csrf
-                                <button class="button" type="submit" onclick="return confirm(`Are you sure you want to archive this task?`)">Archive</button>
+                                <button class="button" type="submit"
+                                        onclick="return confirm(`Are you sure you want to archive this task?`)">Archive
+                                </button>
                             </form>
                         </div>
                         <div>
